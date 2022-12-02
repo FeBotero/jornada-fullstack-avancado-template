@@ -1,6 +1,7 @@
 // Imports
 const express = require("express");
 const cors = require("cors");
+const itemRouter = require("./item/item.router");
 
 // Porta do servidor
 const port = process.env.PORT || 3000;
@@ -19,7 +20,7 @@ async function main() {
   });
 
   // Inicialização dos `Routers`
-  // ...
+  app.use("/item", itemRouter);
 
   // Inicia o servidor
   app.listen(port, () => {
