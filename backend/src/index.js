@@ -1,12 +1,16 @@
 // Imports
 const express = require("express");
 const cors = require("cors");
+const { conncetToDatabase } = require("./db/database.helper");
 const itemRouter = require("./item/item.router");
+const categoryRouter = require("./category/category.router");
 
 // Porta do servidor
 const port = process.env.PORT || 3000;
 
 async function main() {
+  // Conecta ao banco
+  await conncetToDatabase();
   // Cria o servidor `express`
   const app = express();
 
@@ -21,6 +25,7 @@ async function main() {
 
   // Inicialização dos `Routers`
   app.use("/item", itemRouter);
+  app.use("/category", categoryRouter);
 
   // Inicia o servidor
   app.listen(port, () => {

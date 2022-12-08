@@ -1,16 +1,18 @@
 const { isObjectIdValid } = require("../db/database.helper");
 
-// Apresenta todos os dados dos itens
+// Apresenta todas as categorias
 const readAll = (req, res) => {
   const category = [];
   res.send(category);
 };
-// Cria um novo item
+// Cria um novo Catergoria
 const create = (req, res) => {
   const category = req.body;
 
   if (!category || !category.name) {
-    return res.status(404).send({ message: "Dados inválidos." });
+    return res
+      .status(404)
+      .send({ message: "Dados inválidos. Favor verificar novamente!" });
   }
   const newCategory = {};
 
