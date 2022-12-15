@@ -21,7 +21,7 @@ const findById = async (req, res) => {
   res.send(categoria);
 };
 // Cria um novo Catergoria
-const create = (req, res) => {
+const create = async (req, res) => {
   const category = req.body;
 
   if (!category || !category.name) {
@@ -29,7 +29,7 @@ const create = (req, res) => {
       .status(404)
       .send({ message: "Dados inválidos. Favor verificar novamente!" });
   }
-  const newCategory = {};
+  const newCategory = await service.create(category);
 
   res.status(201).send(newCategory);
 };
